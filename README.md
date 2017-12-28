@@ -57,6 +57,43 @@ place. The last consequence is very dangerous because it can allow users to modi
 privileged program, and thus change the behavior of the program. The task is to develop
 a scheme to exploit the vulnerability.
 
+8. **Cross Site Request Forgery Attack**<br>
+Description: In this lab, we will be attacking a social networking web application using the CSRF attack. The
+open-source social networking application called Elgg has countermeasures against CSRF, but we have
+turned them off for the purpose of this lab.
+
+9. **Cross Site Scripting Attack**<br>
+Description: In this lab, we need to exploit
+this vulnerability to launch an XSS attack on the modified Elgg, in a way that is similar to what Samy
+Kamkar did to MySpace in 2005 through the notorious Samy worm. The ultimate goal of this attack is to
+spread an XSS worm among the users, such that whoever views an infected user profile will be infected, and
+whoever is infected will add you (i.e., the attacker) to his/her friend list.
+
+10. **SQL injection Attack**<br>
+Description: In this lab, we have created a web application that is vulnerable to the SQL injection attack. Our web
+application includes the common mistakes made by many web developers. Our goal is to find ways to
+exploit the SQL injection vulnerabilities, demonstrate the damage that can be achieved by the attack, and
+master the techniques that can help defend against such type of attacks.
+
+11. **Android Repackaging Attack**<br>
+Description: Repackaging attack is a very common type of attacks on Android devices. In such an attack, attackers
+modify a popular app downloaded from app markets, reverse engineer the app, add some malicious payloads,
+and then upload the modified app to app markets. Users can be easily fooled, because it is hard to notice
+the difference between the modified app and the original app. Once the modified apps are installed, the
+malicious code inside can conduct attacks, usually in the background. We gain hands-on experience on the Android Repackaging attack.
+
+12. **Android Device Rooting Attack**<br>
+Description: The objective of this lab is two-fold. First, through this lab, we will get familiar with the process
+of device rooting and understand why certain steps are needed. Many people can root Android devices, but
+not many people fully understand why things have to be done in a particular way. Second, the entire rooting
+mechanism involves many pieces of knowledge about the Android system and operating system in general,
+so it serves as a great vehicle for students to gain such in-depth system knowledge. In this lab, we will ask
+students to develop a complete rooting package from scratch, and demonstrate how to use the package to
+root the Android VM provided by us.
+
+
+
+
 ## Key Learnings
 
 - These attack labs gives us the idea of fundamental principles of computer system security, including authentication, access control,
