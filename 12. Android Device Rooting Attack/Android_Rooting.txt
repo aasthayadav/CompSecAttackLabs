@@ -1,0 +1,80 @@
+
+=========================
+Task 1: 
+=========================
+
+The content of update-binary
+------------------
+
+cp dummy.sh /android/system/xbin
+chmod a+x /android/system/xbin/dummy.sh
+sed -i "/return 0/i/system/xbin/dummy.sh" /android/system/etc/init.sh
+
+=========================
+Task 2: 
+=========================
+
+1) my_app_process.c
+-------------------
+
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+
+extern char ** environ;
+
+int main(int argc, char ** argv) {
+ // Write the dummy file 
+ FILE * f = fopen("/system/dummy2", "w");
+ if (f == NULL) { 
+    printf("Permission Denied.\n");
+    exit(EXIT_FAILURE);
+ }
+ fclose(f);
+
+ // Launch the original binary 
+ char * cmd = "/system/bin/app_process_original";
+ execve(cmd, argv, environ);
+
+ // execve () returns only if it fails
+ return EXIT_FAILURE;
+}
+
+
+2) Application.mk 
+-------------------
+
+APP_ABI :=x86
+APP_PLATFORM := android-21
+APP_STL := stlport_static
+APP_BUILD_SCRIPT := Android.mk
+
+
+3) Android.mk
+-------------------
+
+LOCAL_PATH := $(call my-dir)
+include $(CLEAR_VARS)
+LOCAL_MODULE := my_app_process
+LOCAL_SRC_FILES := my_app_process.c
+include $(BUILD_EXECUTABLE)
+
+
+4) Compile the code
+--------------------
+
+export NDK_PROJECT_PATH=.
+ndk-build NDK_APPLICATION_MK=./Application.mk
+
+
+5) The content of update-binary
+----------------------------------
+
+mv /android/system/bin/app_process32 /android/system/bin/app_process_original
+cp my_app_process /android/system/bin/app_process32
+chmod a+x /android/system/bin/app_process32
+
+
+
+ 
+

@@ -1,0 +1,30 @@
+
+Changes to AndroidManifest.xml
+===============================
+
+- Add permissions:
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+- Add Broadcast receiver:
+        <receiver android:name="com.MaliciousCode">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+
+
+
+Generate the signing key
+===============================
+
+keytool -alias mykey -genkey -v -keystore mykey.keystore
+
+
+
+Sign the apk file
+===============================
+
+jarsigner -keystore mykey.keystore RepackagingLab.apk mykey
+
