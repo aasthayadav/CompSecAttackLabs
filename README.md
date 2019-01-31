@@ -1,4 +1,4 @@
-# SEED Attack Labs
+# OWASP Top 10 and common Attacks
 
 These attack labs cover some of the most common vulnerabilties in general software. They show how attacks work in exploiting these vulnerabilities.
 
